@@ -1,18 +1,33 @@
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
+/**
+ * Bootstrap navbar component 
+ * @param {*} searchText Represents the search text input from user 
+ * @param {*} setSearchText Represents the function to update the search text input from user
+ * @returns JSX React Component 
+ */
 
 function Navbar({searchText, setSearchText}) {
-  const updateSearchText = (e) => {
-    setSearchText(e.target.value);
+
+  const navigate = useNavigate();
+
+  /**
+   * Function to update the search text input from user to searchText
+   * @param {object} onClickEvent - event from onClick listener 
+   */ 
+  const updateSearchText = (onClickEvent) => {
+    navigate('/search');
+    setSearchText(onClickEvent.target.value);
   };
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <Link class="navbar-brand" to="/">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/">
           Movie Browser
         </Link>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -20,23 +35,23 @@ function Navbar({searchText, setSearchText}) {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <Link class="nav-link active" aria-current="page" to="/">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/">
                 Home
               </Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/about">
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">
                 About Us
               </Link>
             </li>
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <Link
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 to="/"
                 id="navbarDropdown"
                 role="button"
@@ -45,48 +60,48 @@ function Navbar({searchText, setSearchText}) {
               >
                 Dropdown
               </Link>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <Link class="dropdown-item" to="/">
+                  <Link className="dropdown-item" to="/">
                     Action
                   </Link>
                 </li>
                 <li>
-                  <Link class="dropdown-item" to="/">
+                  <Link className="dropdown-item" to="/">
                     Another action
                   </Link>
                 </li>
                 <li>
-                  <hr class="dropdown-divider"></hr>
+                  <hr className="dropdown-divider"></hr>
                 </li>
                 <li>
-                  <Link class="dropdown-item" to="/">
+                  <Link className="dropdown-item" to="/">
                     Something else here
                   </Link>
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link
-                class="nav-link disabled"
+                className="nav-link disabled"
                 to="/"
-                tabindex="-1"
+                tabIndex="-1"
                 aria-disabled="true"
               >
                 Disabled
               </Link>
             </li>
           </ul>
-          <form class="d-flex">
+          <form className="d-flex">
             <input
-              class="form-control me-2"
+              className="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
               value={searchText}
               onChange={updateSearchText}
             ></input>
-            <button class="btn btn-outline-success" type="submit">
+            <button className="btn btn-outline-success" type="submit">
               Search
             </button>
           </form>
