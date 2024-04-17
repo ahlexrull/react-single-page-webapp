@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import "./App.css";
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import AboutView from "./components/AboutView";
 import MovieView from "./components/MovieView";
 import SearchView from "./components/SearchView";
+import Page404 from "./components/Page404";
 
 // IMDB API KEY = fdf3223cfc4c7aaafcb5d11ebbcf3a98
 // example link 'https://api.themoviedb.org/3/search/movie?api_key=fdf3223cfc4c7aaafcb5d11ebbcf3a98&query=star%20wars&include_adult=false&language=en-US&page=1'
@@ -36,6 +37,8 @@ function App() {
         <Route path="/about" element={<AboutView />} />
         <Route path="/search" element={<SearchView keyword={searchText} searchResults={searchResults} />} />
         <Route path="/movies/:id" element={<MovieView />} />
+        <Route element={<Page404 />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </div>
   );
